@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#iteriting 10 times using while
+#bad luck for the 4 iter
+#good luck for the 8 iter
+#Best School for the rest
+
+iter=1
+while [ $iter -le 10 ]
+do
+	if [ $iter -eq 4 ]
+	then
+		echo "bad luck"
+	elif [ $iter -eq 8 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	iter=$((iter + 1))
+done
