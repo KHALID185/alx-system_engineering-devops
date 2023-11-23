@@ -3,15 +3,15 @@
 
 for iter in {1..100}
 do
-	if (( iter % 3 == 0 ))
+	if (( iter % 15 == 0 ))
+	then
+		echo "FizzBuzz"
+	elif (( iter % 3 == 0 ))
 	then
 		echo "Fizz"
 	elif (( iter % 5 == 0 ))
 	then
 		echo "Buzz"
-	elif (( iter % 15 == 0 ))
-	then
-		echo "FizzBuzz"
 	else
 		echo "$iter"
 	fi
