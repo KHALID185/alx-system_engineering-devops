@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#best school 10 times using until
+
+iter=10
+until [ $iter -eq 20 ]
+do
+	echo "Best School"
+	iter=$((iter + 1))
+done
