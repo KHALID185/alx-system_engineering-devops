@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-#best school 10 times using while
+#best school 10 times using while and hi in 9
 
 iter=10
 while [ $iter -lt 20 ]
 do
-	if [ $iter -eq 18]
+	if [ $iter -eq 19 ]
 	then
 		echo "Hi"
 	fi
