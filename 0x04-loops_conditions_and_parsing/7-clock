@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#12 hours display munite and hours
+
+h=0
+while [ $h -le 12 ]
+do
+	echo "hour: $h"
+	min=1
+	while [ $min -lt 60 ]
+	do
+		echo "$min"
+		min=$((min + 1))
+	done
+	h=$((h + 1))
+done
