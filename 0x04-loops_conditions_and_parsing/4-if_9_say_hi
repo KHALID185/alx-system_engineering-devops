@@ -4,7 +4,7 @@
 iter=10
 while [ $iter -lt 20 ]
 do
-	if [ $iter == 18]
+	if [ $iter -eq 18]
 	then
 		echo "Hi"
 	fi
