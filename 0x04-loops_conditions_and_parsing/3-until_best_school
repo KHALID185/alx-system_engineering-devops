@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#best school 10 times using until
+#best school 10 times using while
 
 iter=10
 until [ $iter -eq 20 ]
