@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# echo I'am alive! to the file /tmp/my_process
+# pause the prgrm 2 seconds evry time
+
+while true
+do
+  echo "I am alive!" >> /tmp/my_process
+  sleep 2
+done
