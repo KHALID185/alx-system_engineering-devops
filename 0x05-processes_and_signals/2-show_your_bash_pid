@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#display line countain bash word
+#u can't use pgrep
+# shellcheck disable=SC2009
+
+./1-list_your_processes | grep "bash"
