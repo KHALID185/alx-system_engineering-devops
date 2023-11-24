@@ -13,36 +13,35 @@
 
 int infinite_while(void)
 {
-while (1)
-{
-sleep(1);
-}
-return (0);
+	while (1)
+	{
+		sleep(1);
+	}
+	return (0);
 }
 
 /**
 * main - 5 zombie process
-*
-* Return: 0 program run successufly  
+* Return: 0 program run successufly
 */
 
 int main(void)
 {
-char counter = 0;
-pid_t PiDD;
+	char counter = 0;
+	pid_t PiDD;
 
-while (counter < 5)
-{
-PiDD = fork();
-if (PiDD > 0)
-{
-printf("Zombie process created, PID: %d\n", PiDD);
-sleep(1);
-counter++;
-}
-else
-exit(0);
-}
-infinite_while();
-return (EXIT_SUCCESS);
+	while (counter < 5)
+	{
+		PiDD = fork();
+		if (PiDD > 0)
+		{
+			printf("Zombie process created, PID: %d\n", PiDD);
+			sleep(1);
+			counter++;
+		}
+		else
+			exit(0);
+	}
+	infinite_while();
+	return (EXIT_SUCCESS);
 }
