@@ -4,11 +4,10 @@
 #include <unistd.h>
 #include <sys/types.h>
 
-
-
 /**
-* infinite_while - Run an infinite while loop.
-* Return: O success
+ * infinite_while - Run an infinite while loop.
+ *
+ * Return: 0 success
 */
 
 int infinite_while(void)
@@ -21,8 +20,9 @@ int infinite_while(void)
 }
 
 /**
-* main - 5 zombie process
-* Return: 0 program run successufly
+ * main - Entry prgrm five zombie process
+ *
+ * Return: 0 program run successufly
 */
 
 int main(void)
@@ -42,6 +42,8 @@ int main(void)
 		else
 			exit(0);
 	}
+
 	infinite_while();
+
 	return (EXIT_SUCCESS);
 }
