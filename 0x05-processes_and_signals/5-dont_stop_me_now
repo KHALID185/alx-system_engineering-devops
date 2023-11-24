@@ -3,9 +3,10 @@
 #  stopped our 4-to_infinity_and_beyond process using ctrl+c
 # use kill
 
-id = $(pgrep "bash ./4-to_infinity_and_beyond" -f)
+#the pid of the prgrm
+pid=$(pgrep "bash ./4-to_infinity_and_beyond" -f)
 
-if [ -n "$id" ]
+if [ -n "$pid" ]
 then
-	kill -15 "$id"
+	kill -15 "$pid"
 fi
