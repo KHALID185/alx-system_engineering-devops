@@ -3,9 +3,9 @@
 #  stopped our 4-to_infinity_and_beyond process using ctrl+c
 # use kill
 
-ID = $(pgrep "bash ./4-to_infinity_and_beyond" -f)
+id = $(pgrep "bash ./4-to_infinity_and_beyond" -f)
 
-if [ -n "$ID" ]
+if [ -n "$id" ]
 then
-	kill -15 "$ID"
+	kill -15 "$id"
 fi
