@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# command for listning for localhost exactly in port 98
+
+nc -l localhost 98
