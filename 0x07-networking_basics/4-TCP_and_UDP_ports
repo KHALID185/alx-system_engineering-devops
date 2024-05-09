@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# to display all ports listning this is the command
+
+netstat -lp
