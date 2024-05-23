@@ -1,1 +1,1 @@
-engeneering devops
+queries of sql
