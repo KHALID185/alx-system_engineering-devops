@@ -1,15 +1,29 @@
 #!/usr/bin/env bash
-# this file is for redirection to another page
-
-# nginx installition
-sudo apt-get update
-sudo apt-get install -y nginx
+# Configures a new ubuntuto redirect to youtube
 
 
-# some configuration that i should add
-string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
+echo -e "Updating and installing Nginx.\n"
+sudo apt-get update -y -qq && \
+         sudo apt-get install nginx -y
 
-sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+echo -e "\nSetting up some minor stuff.\n"
 
-# ngnix restart
-service nginx restart
+sudo service nginx start
+
+# allowing nginx on firewall
+sudo ufw allow 'Nginx HTTP'
+
+# Give the user ownership to website files for easy editing
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# redirect it to a youtube video
+sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+sudo service nginx restart
+
+echo -e "\nCompleted.\n"
