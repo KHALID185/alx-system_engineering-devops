@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# this file is for redirection to another page
+
+# nginx installition
+sudo apt-get update
+sudo apt-get install -y nginx
+
+
+# some configuration that i should add
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
+
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+
+# ngnix restart
+service nginx restart
