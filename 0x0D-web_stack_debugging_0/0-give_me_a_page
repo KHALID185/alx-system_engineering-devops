@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# a script to restart apache return Hello Holberton
+service apache2 restart
