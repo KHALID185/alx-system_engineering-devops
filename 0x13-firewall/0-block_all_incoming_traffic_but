@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# script to install ufw set all requirements to it
+
+sudo apt-get update
+sudo apt-get install ufw
+sudo ufw enable
+sudo ufw default deny incoming
+
+#allow ports
+sudo ufw allow 22/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 80/tcp
+echo "y" | sudo ufw enable
+
+#check status
+sudo ufw status
