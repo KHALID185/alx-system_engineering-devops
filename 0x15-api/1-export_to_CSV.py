@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Script to get TODO list progress
-    by employee ID and save it to
+    employee ID and save it to
     in JSON fomat
 """
 from json import dump
