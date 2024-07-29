@@ -1,40 +1,42 @@
 #!/usr/bin/python3
-"script to export a file to csv format"
-import requests
-import sys
+""" Script to get TODO list progress
+    by employee ID and save it to
+    in JSON fomat
+"""
+from json import dump
+from requests import get
+from sys import argv
 
 
-def tasks_done(id):
-    '''a fct task done
-        parameter : id
-    '''
+def todo_json(emp_id):
+    """ Send request for employee's
+        todo list to API
+    """
+    file_name = '{}.json'.format(emp_id)
+    url_user = 'https://jsonplaceholder.typicode.com/users/'
+    url_todo = 'https://jsonplaceholder.typicode.com/todos/'
 
-    url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
-    response = requests.get(url)
-    response_json = response.json()
-    employee_name = response_json["name"]
+    # check if user exists
+    user = get(url_user + emp_id).json().get('username')
 
-    url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
-    todos = requests.get(url)
-    todos_json = todos.json()
-    number_tasks = len(todos_json)
+    if user:
+        params = {'userId': emp_id}
+        #  get all tasks
+        tasks = get(url_todo, params=params).json()
 
-    task_compleated = 0
-    task_list = ""
+        #  create list of dictionaries
+        #  with info about each task
+        task_list = []
+        for task in tasks:
+            task_list.append({"task": task.get('title'),
+                              "completed": task.get('completed'),
+                              "username": user})
 
-    file_name = "{}.csv".format(id)
-
-    with open(file_name, "a") as fd:
-        for todo in todos_json:
-            completed = todo.get("completed")
-            title = todo.get("title")
-            csv_data = "\"{}\",\"{}\",\"{}\",\"{}\"\n".format(id,
-                                                              employee_name,
-                                                              completed,
-                                                              title
-                                                              )
-            fd.write(csv_data)
+        #  open file in write mode and jsonify
+        with open(file_name, 'w', encoding='utf8') as f:
+            dump({emp_id: task_list}, f)
 
 
-if __name__ == "__main__":
-    tasks_done(sys.argv[1])
+if __name__ == '__main__':
+    if len(argv) > 1:
+        todo_json(argv[1])
