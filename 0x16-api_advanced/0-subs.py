@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-number of subscribers for a given subreddit
+script number of subscribers for a given subreddit
 """
 
 from requests import get
