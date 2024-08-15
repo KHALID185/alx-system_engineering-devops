@@ -1,22 +1,25 @@
 #!/usr/bin/python3
 """
-    script to print the number of subscribres
+number of subscribers for a given subreddit
 """
-import requests
+
+from requests import get
 
 
 def number_of_subscribers(subreddit):
     """
-    function to get the number of subs
+    function return the number of subs
     """
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'user-agent': 'request'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-
-    if response.status_code != 200:
+    if subreddit is None or not isinstance(subreddit, str):
         return 0
 
-    data = response.json().get("data")
-    num_subs = data.get("subscribers")
+    user_agent = {'User-agent': 'Google Chrome Version 127.0.6533.119'}
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    response = get(url, headers=user_agent)
+    results = response.json()
 
-    return num_subs
+    try:
+        return results.get('data').get('subscribers')
+
+    except Exception:
+        return 0
